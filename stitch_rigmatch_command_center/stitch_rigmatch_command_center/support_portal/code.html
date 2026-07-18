@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RIGMatch CMD CENTER | Support</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(19, 19, 24, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .border-glow-violet:hover {
+            border-color: #d0bcff;
+            box-shadow: 0 0 15px rgba(208, 188, 255, 0.2);
+        }
+        .border-glow-cyan:focus-within {
+            border-color: #5de6ff;
+            box-shadow: 0 0 15px rgba(93, 230, 255, 0.2);
+        }
+        .breathing-dot {
+            animation: breathe 2s infinite ease-in-out;
+        }
+        @keyframes breathe {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .terminal-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .terminal-scroll::-webkit-scrollbar-thumb {
+            background: rgba(93, 230, 255, 0.3);
+            border-radius: 2px;
+        }
+        .divider-gradient {
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            height: 1px;
+            width: 100%;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#494454",
+                        "surface-container-highest": "#35343a",
+                        "tertiary": "#ffb95f",
+                        "surface-container-high": "#2a292f",
+                        "on-secondary-container": "#00515d",
+                        "surface-container": "#1f1f25",
+                        "on-primary-container": "#340080",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "primary-fixed-dim": "#d0bcff",
+                        "inverse-surface": "#e4e1e9",
+                        "primary-fixed": "#e9ddff",
+                        "surface-bright": "#39383e",
+                        "primary-container": "#a078ff",
+                        "secondary-container": "#00cbe6",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#131318",
+                        "secondary": "#5de6ff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-tertiary": "#472a00",
+                        "tertiary-container": "#ca8100",
+                        "on-secondary-fixed": "#001f25",
+                        "on-error": "#690005",
+                        "outline": "#958ea0",
+                        "secondary-fixed": "#a2eeff",
+                        "on-primary-fixed": "#23005c",
+                        "error": "#ffb4ab",
+                        "background": "#131318",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-background": "#e4e1e9",
+                        "surface-container-low": "#1b1b20",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "surface-tint": "#d0bcff",
+                        "on-surface": "#e4e1e9",
+                        "on-surface-variant": "#cbc3d7",
+                        "surface-variant": "#35343a",
+                        "on-tertiary-container": "#3e2400",
+                        "error-container": "#93000a",
+                        "primary": "#d0bcff",
+                        "on-secondary": "#00363e",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-primary": "#3c0091",
+                        "inverse-primary": "#6d3bd7",
+                        "inverse-on-surface": "#303036",
+                        "surface-container-lowest": "#0e0e13",
+                        "surface": "#131318",
+                        "on-tertiary-fixed-variant": "#653e00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "gutter": "20px",
+                        "xs": "8px",
+                        "xl": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Space Grotesk"],
+                        "data-value": ["JetBrains Mono"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-md": ["Manrope"],
+                        "data-label": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Background Shader -->
+
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-md py-xs bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_0_15px_rgba(208,188,255,0.1)]">
+<div class="flex items-center gap-lg">
+<span class="font-headline-md text-headline-md font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">RIGMatch</span>
+<nav class="hidden md:flex gap-md">
+<a class="font-data-label text-data-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Dashboard</a>
+<a class="font-data-label text-data-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Hardware</a>
+<a class="font-data-label text-data-label text-on-surface-variant hover:text-on-surface transition-colors" href="#">Recommendations</a>
+<a class="font-data-label text-data-label text-primary border-b-2 border-primary pb-1" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center bg-black/40 rounded-lg px-xs py-1 border border-outline-variant/30 border-glow-cyan">
+<span class="material-symbols-outlined text-secondary text-[20px] mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-data-label font-data-label text-secondary placeholder:text-secondary/40 w-48" placeholder="QUERY SYSTEM..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all duration-300">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all duration-300">settings</button>
+<div class="w-8 h-8 rounded-full border border-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional gamer profile avatar with neon purple backlighting, wearing high-end sleek headphones, set against a dark tech-focused background with subtle bokeh light effects in electric violet." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZrLBwGxl84JvGQPSL9uiCfTxWTh9QZGByzSDD9yiMBIlyKNqVyFDpQ-sk3aQjS0Qb7eOycp9jjDuGr-gHITEk5Vzk-C6D5DdMIgOqFpxNM-oHZh-MfG_VqXKQCDlpoVHCMULPkR6srNvd0CeBb6naJPa-pg7OjDmfATYrYkrg792XeGk2ZZAJ5wlGw7QLFTZypTZFup9XdbOX8ZsGCz23Vv0oCG9He5BFrX6mexJynDEbEkzNkImHZsYoWHqrjh4a5IS6QByzrR7Z"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] z-40 flex flex-col bg-surface-container/60 dark:bg-surface-container-lowest/60 backdrop-blur-xl border-r border-outline-variant/20 w-64 hidden lg:flex">
+<div class="p-md border-b border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-secondary breathing-dot"></div>
+<div>
+<div class="font-data-label text-data-label text-secondary font-bold uppercase tracking-wider">System Config</div>
+<div class="text-[10px] text-on-surface-variant/60 font-data-label">Auto-Detection Active</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 py-md">
+<ul class="space-y-base">
+<li><a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-200 ease-in-out font-data-label text-data-label" href="#"><span class="material-symbols-outlined">memory</span> CPU</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-200 ease-in-out font-data-label text-data-label" href="#"><span class="material-symbols-outlined">developer_board</span> GPU</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-200 ease-in-out font-data-label text-data-label" href="#"><span class="material-symbols-outlined">data_thresholding</span> RAM</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-200 ease-in-out font-data-label text-data-label" href="#"><span class="material-symbols-outlined">save</span> Storage</a></li>
+<li><a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-200 ease-in-out font-data-label text-data-label" href="#"><span class="material-symbols-outlined">ac_unit</span> Cooling</a></li>
+</ul>
+</nav>
+<div class="p-md space-y-md border-t border-outline-variant/20">
+<button class="w-full py-sm bg-secondary/10 border border-secondary text-secondary font-data-label text-data-label hover:bg-secondary hover:text-on-secondary transition-all duration-300">Scan Hardware</button>
+<div class="space-y-sm">
+<a class="flex items-center gap-sm text-on-surface-variant hover:text-secondary font-data-label text-data-label" href="#"><span class="material-symbols-outlined">analytics</span> Diagnostics</a>
+<a class="flex items-center gap-sm text-on-surface-variant hover:text-secondary font-data-label text-data-label" href="#"><span class="material-symbols-outlined">help_outline</span> Help</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 pb-16 px-md md:px-xl min-h-screen">
+<div class="max-w-container-max mx-auto space-y-xl">
+<!-- Page Header -->
+<section class="space-y-xs">
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-on-surface">Support &amp; Knowledge</h1>
+<p class="text-on-surface-variant max-w-2xl font-body-lg text-body-lg">Access technical telemetry, resolve hardware conflicts, and explore community-validated configurations.</p>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Terminal FAQ (Left Column - 7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-gutter">
+<div class="glass-panel rounded-xl p-md flex flex-col h-[500px] border-glow-violet transition-all duration-500">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-data-label text-data-label font-bold uppercase tracking-widest">Technical FAQ Terminal</span>
+</div>
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
+<div class="w-3 h-3 rounded-full bg-secondary/40"></div>
+</div>
+</div>
+<div class="flex-1 bg-black/40 rounded border border-outline-variant/30 p-md font-data-value text-data-label terminal-scroll overflow-y-auto space-y-md" id="terminal-output">
+<div class="text-secondary/60">--- RIGMATCH KNOWLEDGE BASE v2.4.1 INITIALIZED ---</div>
+<div class="text-on-surface">User@RIGMatch:~$ query --faq latest</div>
+<div class="space-y-sm">
+<div class="text-primary">&gt; [INFO] FETCHING FAQ DATA...</div>
+<div class="pl-4 border-l border-primary/30">
+<span class="text-tertiary">Q: How do I resolve thermal throttling on Gen 5 SSDs?</span><br/>
+<span class="text-on-surface-variant">A: Ensure active cooling is enabled. Update firmware via CMD_CENTER -&gt; STORAGE -&gt; FIRMWARE. Check if M.2 heatsink contact is optimized.</span>
+</div>
+<div class="pl-4 border-l border-primary/30">
+<span class="text-tertiary">Q: Bottlenecking detected in 4K rendering tasks.</span><br/>
+<span class="text-on-surface-variant">A: System telemetry suggests PCIe lane saturation. Move GPU to Slot 1 and disable secondary NVMe drives to free up lanes.</span>
+</div>
+<div class="pl-4 border-l border-primary/30">
+<span class="text-tertiary">Q: Memory latency issues with DDR5-7200 kit.</span><br/>
+<span class="text-on-surface-variant">A: Apply XMP/EXPO Profile 2. Ensure BIOS version is 1.24 or higher for improved IMC stability.</span>
+</div>
+</div>
+<div class="text-on-surface flex">
+<span>User@RIGMatch:~$</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 ml-2 text-secondary flex-1 font-data-value" placeholder="Type command..." type="text"/>
+</div>
+</div>
+</div>
+<!-- System Diagnostics Tool -->
+<div class="glass-panel rounded-xl p-md border-glow-cyan transition-all duration-500">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+<h2 class="font-headline-md text-headline-md">System Diagnostics</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<div class="p-sm bg-surface-container rounded flex flex-col items-center justify-center border border-outline-variant/10">
+<span class="text-on-surface-variant font-data-label text-xs mb-1">CPU STABILITY</span>
+<div class="text-secondary font-data-value text-data-value">99.2%</div>
+<div class="w-full h-1 bg-outline-variant/30 mt-2 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[99%]"></div>
+</div>
+</div>
+<div class="p-sm bg-surface-container rounded flex flex-col items-center justify-center border border-outline-variant/10">
+<span class="text-on-surface-variant font-data-label text-xs mb-1">THERMAL HEADROOM</span>
+<div class="text-tertiary font-data-value text-data-value">14°C</div>
+<div class="w-full h-1 bg-outline-variant/30 mt-2 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[40%]"></div>
+</div>
+</div>
+<div class="p-sm bg-surface-container rounded flex flex-col items-center justify-center border border-outline-variant/10">
+<span class="text-on-surface-variant font-data-label text-xs mb-1">NETWORK LATENCY</span>
+<div class="text-primary font-data-value text-data-value">18ms</div>
+<div class="w-full h-1 bg-outline-variant/30 mt-2 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[20%]"></div>
+</div>
+</div>
+</div>
+<div class="divider-gradient mb-lg"></div>
+<div class="flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-on-surface">Generate full hardware report?</span>
+<button class="px-lg py-sm bg-primary text-on-primary font-bold rounded-lg hover:brightness-110 transition-all">RUN DIAGNOSTIC</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Community Rig Sharing (Right Column - 5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<div class="glass-panel rounded-xl p-md border-glow-violet h-full">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">hub</span>
+<h2 class="font-headline-md text-headline-md">Rig Sharing</h2>
+</div>
+<button class="text-primary font-data-label text-xs uppercase tracking-widest hover:underline">View All</button>
+</div>
+<div class="space-y-md">
+<!-- Rig Card 1 -->
+<div class="group relative overflow-hidden rounded-lg bg-surface-container-high border border-outline-variant/20 hover:border-primary/50 transition-all duration-300">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-end custom gaming PC with liquid cooling and vibrant electric violet and cyan RGB lighting. The internal components like the GPU and RAM are glowing, housed in a tempered glass case on a clean minimalist desk. Professional product photography style with deep blacks and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7INX5Z_9thSc7orrOEWMz26-qwYANUC1GS2B4Rs-tq4cnlXH8Xjd2NdNytznIr5GzjYeWQE9JdPcsk9k-1QZAlowvQT08_iEavZr1IdRi2IOHWHIFM1YCr0qHd23GS91VZtn83jJ6f_KBm6T6uQ5sOCJe1oiM9necoVvuuTG7gZGUh6X5_mPYVgf-MlMpTz9aEVF8VIoPl-HrROV46hMetiWVLYxjrzbxt3JzS6GvmHhWHIykz8E_0YsDvp7SicaGu7pDaoQQkJy_"/>
+</div>
+<div class="p-sm">
+<div class="flex justify-between items-start mb-base">
+<h3 class="font-data-label text-on-surface font-bold">Project "NEON-STRIKE"</h3>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="font-data-value text-xs ml-1">4.9</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant font-body-md mb-md">i9-14900K | RTX 4090 | 64GB DDR5</p>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-background bg-primary-container"></div>
+<div class="w-6 h-6 rounded-full border border-background bg-secondary-container"></div>
+<div class="w-6 h-6 rounded-full border border-background bg-tertiary-container"></div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">content_copy</button>
+</div>
+</div>
+</div>
+<!-- Rig Card 2 -->
+<div class="group relative overflow-hidden rounded-lg bg-surface-container-high border border-outline-variant/20 hover:border-primary/50 transition-all duration-300">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An ultra-minimalist white PC build with clean cable management and subtle cyan accent lighting. The cooling system features a large radiator and clear liquid tubes. Set in a bright, modern studio environment with soft shadows and a high-tech feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbWr_MfgKMjX2DXWw8sffD5sCKec_lnulQRrPfjocTJTNuIUtpWhcdKkMZKd0TvL0Cu3-Zxe4cQIlcmrrdRtD4jWqUihLjMz01JnauIi8HttUt3DUq02ss4TbG6nPmJDd0GdohS7zFdF-U4-8UdyvDKyiY3pikqSKMcm-CYJyAu9tPJjsWS20Y898wrJzKGHM5qOkSvC3ZM0ug3GNxWWvnKkvXKs_uaE8mYMvVsw4q0K4UhGpsds4KTtmyCKQT3AofRio0RFvTNyic"/>
+</div>
+<div class="p-sm">
+<div class="flex justify-between items-start mb-base">
+<h3 class="font-data-label text-on-surface font-bold">Minimalist Glacier</h3>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="font-data-value text-xs ml-1">4.7</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant font-body-md mb-md">R9 7950X3D | RX 7900 XTX | 32GB</p>
+<div class="flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-background bg-secondary"></div>
+<div class="w-6 h-6 rounded-full border border-background bg-outline"></div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">content_copy</button>
+</div>
+</div>
+</div>
+<button class="w-full py-md border-2 border-dashed border-outline-variant/30 rounded-lg text-on-surface-variant font-data-label text-data-label hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">add_circle</span>
+                                UPLOAD YOUR CONFIG
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Knowledge Categories -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md pb-xl">
+<div class="glass-panel p-md rounded-lg border-glow-violet group cursor-pointer">
+<span class="material-symbols-outlined text-primary mb-sm">book</span>
+<h4 class="font-headline-md text-headline-md mb-base">Assembly Guides</h4>
+<p class="text-on-surface-variant text-sm">Step-by-step telemetry-monitored build instructions.</p>
+</div>
+<div class="glass-panel p-md rounded-lg border-glow-cyan group cursor-pointer">
+<span class="material-symbols-outlined text-secondary mb-sm">security</span>
+<h4 class="font-headline-md text-headline-md mb-base">Stability Benchmarks</h4>
+<p class="text-on-surface-variant text-sm">Stress-test your hardware against community standards.</p>
+</div>
+<div class="glass-panel p-md rounded-lg border-glow-violet group cursor-pointer">
+<span class="material-symbols-outlined text-primary mb-sm">update</span>
+<h4 class="font-headline-md text-headline-md mb-base">Firmware Archive</h4>
+<p class="text-on-surface-variant text-sm">Centralized database for critical component updates.</p>
+</div>
+<div class="glass-panel p-md rounded-lg border-glow-cyan group cursor-pointer">
+<span class="material-symbols-outlined text-secondary mb-sm">groups</span>
+<h4 class="font-headline-md text-headline-md mb-base">Live Mentors</h4>
+<p class="text-on-surface-variant text-sm">Direct connection to verified hardware experts.</p>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-between items-center px-md py-2 bg-surface-container-lowest/90 backdrop-blur-sm border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<div class="font-data-label text-[10px] md:text-data-label uppercase tracking-widest text-tertiary">
+            © 2024 RIGMATCH CMD CENTER | SYSTEM STABLE
+        </div>
+<div class="hidden md:flex items-center gap-md font-data-label text-data-label uppercase tracking-widest text-on-surface-variant">
+<span class="hover:text-primary transition-colors cursor-default">Latency: 14ms</span>
+<span class="hover:text-primary transition-colors cursor-default">Server: AWS-US-EAST</span>
+<span class="hover:text-primary transition-colors cursor-default">API: v2.4.1</span>
+</div>
+</footer>
+<!-- Interactive Terminal Script -->
+<script>
+        const terminalInput = document.querySelector('#terminal-output input');
+        const terminalOutput = document.querySelector('#terminal-output');
+
+        terminalInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const cmd = this.value;
+                const line = document.createElement('div');
+                line.className = 'text-on-surface';
+                line.textContent = `User@RIGMatch:~$ ${cmd}`;
+                
+                const response = document.createElement('div');
+                response.className = 'text-secondary/60 italic pl-4';
+                
+                if (cmd.toLowerCase().includes('status')) {
+                    response.textContent = '> [SYSTEM] ALL CORES OPERATING WITHIN THERMAL LIMITS. LATENCY NOMINAL.';
+                } else if (cmd.toLowerCase().includes('help')) {
+                    response.textContent = '> [CMD] AVAILABLE: status, query --faq, clear, diagnostics';
+                } else if (cmd.toLowerCase() === 'clear') {
+                    terminalOutput.innerHTML = '';
+                    return;
+                } else {
+                    response.textContent = `> [ERR] COMMAND "${cmd}" NOT RECOGNIZED. TYPE "HELP" FOR COMMAND LIST.`;
+                }
+
+                terminalOutput.insertBefore(line, this.parentElement);
+                terminalOutput.insertBefore(response, this.parentElement);
+                this.value = '';
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            }
+        });
+    </script>
+</body></html>
